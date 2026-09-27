@@ -244,6 +244,14 @@ input[type="text"]:focus, select:focus {
   margin-left: 5px;
 }
 
+/* ふりがなのスタイル（小さく・薄く） */
+#kanji-display rt {
+  font-size: 0.4em;       /* 漢字の40%の大きさ */
+  color: #718096;         /* 少し薄いグレー */
+  font-weight: normal;    /* 文字の太さを標準に */
+  margin-bottom: 2px;
+}
+
 .kanji-text {
   font-size: 2rem;
   font-weight: bold;

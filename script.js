@@ -125,18 +125,60 @@ const WORD_LIST = {
     { kanji: "哨戒班", kana: "しょうかいはん" },
     { kanji: "塩を少々", kana: "しおをしょうしょう" },
     { kanji: "良薬口に苦し", kana: "りょうやくくちににがし" },
-    { kanji: "木星", kana: "もくせい" },
-    { kanji: "火星", kana: "かせい" },
-    { kanji: "地球", kana: "ちきゅう" },
+    { kanji: "境界線", kana: "きょうかいせん" },
+    { kanji: "超常現象", kana: "ちょうじょうげんしょう" },
+    { kanji: "敗者復活戦", kana: "はいしゃふっかつせん" },
     { kanji: "金星", kana: "きんせい" },
-    { kanji: "水星", kana: "すいせい" },
-    { kanji: "太陽", kana: "たいよう" },
+    { kanji: "原動力", kana: "げんどうりょく" },
+    { kanji: "同調圧力", kana: "どうちょうあつりょく" },
     { kanji: "海王星", kana: "かいおうせい" },
     { kanji: "天王星", kana: "てんのうせい" },
-    { kanji: "土星", kana: "どせい" },
+    { kanji: "社会人", kana: "しゃかいじん" },
     { kanji: "太陽系", kana: "たいようけい" },
     { kanji: "恒星", kana: "こうせい" },
     { kanji: "こんにちわんこそば", kana: "こんにちわんこそば" },
+    { kanji: "少々", kana: "しょうしょう" },
+	{ kanji: "幼少期", kana: "ようしょうき" },
+	{ kanji: "装飾品", kana: "そうしょくひん" },
+	{ kanji: "取り返しがつかない", kana: "とりかえしがつかない" },
+	{ kanji: "廃品回収", kana: "はいひんかいしゅう" },
+	{ kanji: "ドントマインド", kana: "どんとまいんど" },
+	{ kanji: "先手必勝", kana: "せんてひっしょう" },
+	{ kanji: "衛星放送", kana: "えいせいほうそう" },
+	{ kanji: "集中砲火", kana: "しゅうちゅうほうか" },
+	{ kanji: "もう恋なんてしないなんて", kana: "もうこいなんてしないなんて" },
+	{ kanji: "ありのままの自分", kana: "ありのままのじぶん" },
+	{ kanji: "延長戦", kana: "えんちょうせん" },
+	{ kanji: "想像力", kana: "そうぞうりょく" },
+	{ kanji: "競技場", kana: "きょうぎじょう" },
+	{ kanji: "地震雷火事親父", kana: "じしんかみなりかじおやじ" },
+	{ kanji: "大阪城", kana: "おおさかじょう" },
+	{ kanji: "コンタクトレンズ", kana: "こんたくとれんず" },
+    { kanji: "どうしようもない", kana: "どうしようもない" },
+	{ kanji: "客観的", kana: "きゃっかんてき" },
+	{ kanji: "授業料", kana: "じゅぎょうりょう" },
+	{ kanji: "判断を下す", kana: "はんだんをくだす" },
+	{ kanji: "共通点", kana: "きょうつうてん" },
+	{ kanji: "アドレナリン爆発", kana: "あどれなりんばくはつ" },
+	{ kanji: "関連付ける", kana: "かんれんづける" },
+	{ kanji: "僕のトラウマバレンタイン", kana: "ぼくのとらうまばれんたいん" },
+	{ kanji: "レンタル料", kana: "れんたるりょう" },
+	{ kanji: "想定の範囲内です", kana: "そうていのはんいないです" },
+	{ kanji: "だってもクソもあるか", kana: "だってもくそもあるか" },
+	{ kanji: "客観性", kana: "きゃっかんせい" },
+	{ kanji: "確定申告", kana: "かくていしんこく" },
+	{ kanji: "代表的", kana: "だいひょうてき" },
+	{ kanji: "モモンガモンガ", kana: "ももんがもんが" },
+	{ kanji: "バラモン教", kana: "ばらもんきょう" },
+	{ kanji: "無人コンビニ化計画", kana: "むじんこんびにかけいかく" },
+	{ kanji: "横断歩道", kana: "おうだんほどう" },
+    { kanji: "殴打歩道", kana: "おうだほどう" },
+	{ kanji: "面接試験", kana: "めんせつしけん" },
+	{ kanji: "緊張感", kana: "きんちょうかん" },
+	{ kanji: "臨場感", kana: "りんじょうかん" },
+	{ kanji: "答案用紙", kana: "とうあんようし" },
+	{ kanji: "低年齢化", kana: "ていねんれいか" },
+	{ kanji: "学生証", kana: "がくせいしょう" },
     { kanji: "勝手気ままに", kana: "かってきままに" }
   ]
 };
@@ -356,7 +398,8 @@ function updateDisplay() {
 
 function nextWord() {
   const levelSelect = document.getElementById('level-select');
-  const kanjiDisplay = document.getElementById('kanji-display');
+  const rubyKanji = document.getElementById('ruby-kanji');
+  const rubyKana = document.getElementById('ruby-kana');
   const typedTextDisplay = document.getElementById('typed-text');
   
   // CPU対戦の場合はすべて「4（大会）」の文章を使用。タイムアタックは選択したレベル
@@ -373,8 +416,13 @@ function nextWord() {
   const randomIndex = Math.floor(Math.random() * remainingWords.length);
   nextItem = remainingWords.splice(randomIndex, 1)[0];
 
-  if (kanjiDisplay && currentItem) {
-    kanjiDisplay.textContent = currentItem.kanji;
+  // 漢字とふりがなをセット
+  if (currentItem) {
+    if (rubyKanji && rubyKana) {
+      // ruby要素内のテキストノード（漢字部分）のみ更新
+      rubyKanji.childNodes[0].nodeValue = currentItem.kanji;
+      rubyKana.textContent = currentItem.kana;
+    }
     currentKanaStr = currentItem.kana;
   }
 
