@@ -138,48 +138,81 @@ const WORD_LIST = {
     { kanji: "恒星", kana: "こうせい" },
     { kanji: "こんにちわんこそば", kana: "こんにちわんこそば" },
     { kanji: "少々", kana: "しょうしょう" },
-	{ kanji: "幼少期", kana: "ようしょうき" },
-	{ kanji: "装飾品", kana: "そうしょくひん" },
-	{ kanji: "取り返しがつかない", kana: "とりかえしがつかない" },
-	{ kanji: "廃品回収", kana: "はいひんかいしゅう" },
-	{ kanji: "ドントマインド", kana: "どんとまいんど" },
-	{ kanji: "先手必勝", kana: "せんてひっしょう" },
-	{ kanji: "衛星放送", kana: "えいせいほうそう" },
-	{ kanji: "集中砲火", kana: "しゅうちゅうほうか" },
-	{ kanji: "もう恋なんてしないなんて", kana: "もうこいなんてしないなんて" },
-	{ kanji: "ありのままの自分", kana: "ありのままのじぶん" },
-	{ kanji: "延長戦", kana: "えんちょうせん" },
-	{ kanji: "想像力", kana: "そうぞうりょく" },
-	{ kanji: "競技場", kana: "きょうぎじょう" },
-	{ kanji: "地震雷火事親父", kana: "じしんかみなりかじおやじ" },
-	{ kanji: "大阪城", kana: "おおさかじょう" },
-	{ kanji: "コンタクトレンズ", kana: "こんたくとれんず" },
+    { kanji: "幼少期", kana: "ようしょうき" },
+    { kanji: "装飾品", kana: "そうしょくひん" },
+    { kanji: "取り返しがつかない", kana: "とりかえしがつかない" },
+    { kanji: "廃品回収", kana: "はいひんかいしゅう" },
+    { kanji: "ドントマインド", kana: "どんとまいんど" },
+    { kanji: "先手必勝", kana: "せんてひっしょう" },
+    { kanji: "衛星放送", kana: "えいせいほうそう" },
+    { kanji: "集中砲火", kana: "しゅうちゅうほうか" },
+    { kanji: "もう恋なんてしないなんて", kana: "もうこいなんてしないなんて" },
+    { kanji: "ありのままの自分", kana: "ありのままのじぶん" },
+    { kanji: "延長戦", kana: "えんちょうせん" },
+    { kanji: "想像力", kana: "そうぞうりょく" },
+    { kanji: "競技場", kana: "きょうぎじょう" },
+    { kanji: "地震雷火事親父", kana: "じしんかみなりかじおやじ" },
+    { kanji: "大阪城", kana: "おおさかじょう" },
+    { kanji: "コンタクトレンズ", kana: "こんたくとれんず" },
     { kanji: "どうしようもない", kana: "どうしようもない" },
-	{ kanji: "客観的", kana: "きゃっかんてき" },
-	{ kanji: "授業料", kana: "じゅぎょうりょう" },
-	{ kanji: "判断を下す", kana: "はんだんをくだす" },
-	{ kanji: "共通点", kana: "きょうつうてん" },
-	{ kanji: "アドレナリン爆発", kana: "あどれなりんばくはつ" },
-	{ kanji: "関連付ける", kana: "かんれんづける" },
-	{ kanji: "僕のトラウマバレンタイン", kana: "ぼくのとらうまばれんたいん" },
-	{ kanji: "レンタル料", kana: "れんたるりょう" },
-	{ kanji: "想定の範囲内です", kana: "そうていのはんいないです" },
-	{ kanji: "だってもクソもあるか", kana: "だってもくそもあるか" },
-	{ kanji: "客観性", kana: "きゃっかんせい" },
-	{ kanji: "確定申告", kana: "かくていしんこく" },
-	{ kanji: "代表的", kana: "だいひょうてき" },
-	{ kanji: "モモンガモンガ", kana: "ももんがもんが" },
-	{ kanji: "バラモン教", kana: "ばらもんきょう" },
-	{ kanji: "無人コンビニ化計画", kana: "むじんこんびにかけいかく" },
-	{ kanji: "横断歩道", kana: "おうだんほどう" },
+    { kanji: "客観的", kana: "きゃっかんてき" },
+    { kanji: "授業料", kana: "じゅぎょうりょう" },
+    { kanji: "判断を下す", kana: "はんだんをくだす" },
+    { kanji: "共通点", kana: "きょうつうてん" },
+    { kanji: "アドレナリン爆発", kana: "あどれなりんばくはつ" },
+    { kanji: "関連付ける", kana: "かんれんづける" },
+    { kanji: "僕のトラウマバレンタイン", kana: "ぼくのとらうまばれんたいん" },
+    { kanji: "レンタル料", kana: "れんたるりょう" },
+    { kanji: "想定の範囲内です", kana: "そうていのはんいないです" },
+    { kanji: "だってもクソもあるか", kana: "だってもくそもあるか" },
+    { kanji: "客観性", kana: "きゃっかんせい" },
+    { kanji: "確定申告", kana: "かくていしんこく" },
+    { kanji: "代表的", kana: "だいひょうてき" },
+    { kanji: "モモンガモンガ", kana: "ももんがもんが" },
+    { kanji: "バラモン教", kana: "ばらもんきょう" },
+    { kanji: "無人コンビニ化計画", kana: "むじんこんびにかけいかく" },
+    { kanji: "横断歩道", kana: "おうだんほどう" },
     { kanji: "殴打歩道", kana: "おうだほどう" },
-	{ kanji: "面接試験", kana: "めんせつしけん" },
-	{ kanji: "緊張感", kana: "きんちょうかん" },
-	{ kanji: "臨場感", kana: "りんじょうかん" },
-	{ kanji: "答案用紙", kana: "とうあんようし" },
-	{ kanji: "低年齢化", kana: "ていねんれいか" },
-	{ kanji: "学生証", kana: "がくせいしょう" },
-    { kanji: "勝手気ままに", kana: "かってきままに" }
+    { kanji: "面接試験", kana: "めんせつしけん" },
+    { kanji: "緊張感", kana: "きんちょうかん" },
+    { kanji: "臨場感", kana: "りんじょうかん" },
+    { kanji: "答案用紙", kana: "とうあんようし" },
+    { kanji: "低年齢化", kana: "ていねんれいか" },
+    { kanji: "学生証", kana: "がくせいしょう" },
+    { kanji: "来週宇宙に旅行にって来るわ", kana: "らいしゅううちゅうにりょこうにいってくるわ" },
+    { kanji: "才能は努力で買うもの", kana: "さいのうはどりょくでかうもの" },
+    { kanji: "スピード違反", kana: "すぴーどいはん" },
+    { kanji: "健康診断証明書", kana: "けんこうしんだんしょうめいしょ" },
+    { kanji: "決勝戦", kana: "けっしょうせん" },
+    { kanji: "今日から私は", kana: "きょうからわたしは" },
+    { kanji: "大学院生", kana: "だいがくいんせい" }, 
+    { kanji: "相談に乗る", kana: "そうだんにのる" },
+    { kanji: "トイレの神様", kana: "といれのかみさま" },
+    { kanji: "二酸化炭素", kana: "にさんかたんそ" },
+    { kanji: "入場料", kana: "にゅうじょうりょう" },
+    { kanji: "離婚と転職はお気軽に", kana: "りこんとてんしょくはおきがるに" },
+    { kanji: "消化不良", kana: "しょうかふりょう" },
+    { kanji: "詳細調査", kana: "しょうさいちょうさ" },
+    { kanji: "少子化対策", kana: "しょうしかたいさく" },
+    { kanji: "証明終了", kana: "しょうめいしゅうりょう" },
+    { kanji: "収入減少", kana: "しゅうにゅうげんしょう" },
+    { kanji: "証明完了", kana: "しょうめいかんりょう" },
+    { kanji: "証明書", kana: "しょうめいしょ" },
+    { kanji: "商売繫盛", kana: "しょうばいはんじょう" },
+    { kanji: "波乱万丈", kana: "はらんばんじょう" },
+    { kanji: "勝利宣言", kana: "しょうりせんげん" },
+    { kanji: "昭和時代", kana: "しょうわじだい" },
+    { kanji: "正面衝突", kana: "しょうめんしょうとつ" },
+    { kanji: "消火活動", kana: "しょうかかつどう" },
+    { kanji: "衝撃映像", kana: "しょうげきえいぞう" },
+    { kanji: "料理教室", kana: "りょうりきょうしつ" },
+    { kanji: "体調不良", kana: "たいちょうふりょう" },
+    { kanji: "町内会会長", kana: "ちょうないかいかいちょう" },
+    { kanji: "運動場", kana: "うんどうかい" },
+    { kanji: "招待状", kana: "しょうたいじょう" },
+    { kanji: "招待券", kana: "しょうたいけん" },
+	{ kanji: "フレミングの法則", kana: "ふれみんぐのほうそく" },
+    { kanji: "創造力", kana: "そうぞうりょく" }
   ]
 };
 
@@ -419,7 +452,6 @@ function nextWord() {
   // 漢字とふりがなをセット
   if (currentItem) {
     if (rubyKanji && rubyKana) {
-      // ruby要素内のテキストノード（漢字部分）のみ更新
       rubyKanji.childNodes[0].nodeValue = currentItem.kanji;
       rubyKana.textContent = currentItem.kana;
     }
@@ -514,17 +546,36 @@ function startCpu() {
   const levelSelect = document.getElementById('level-select');
   const level = levelSelect ? levelSelect.value : "1";
   
-  // 目標KPMを取得し、1秒あたりの打鍵数に換算
-  const targetKpm = getTargetCount(level, 'cpu');
-  const hitsPerSec = targetKpm / 60; // 1秒あたりの打鍵数
-  const intervalMs = 1000 / hitsPerSec; // 1打鍵にかかるミリ秒数
+  // 基本となる目標KPM（ベース速度）
+  const baseKpm = getTargetCount(level, 'cpu');
 
   if (cpuInterval) clearInterval(cpuInterval);
 
+  // 0.1秒（100ms）ごとにCPUの挙動を更新・チェック
+  const tickIntervalMs = 100;
+  
   cpuInterval = setInterval(() => {
-    cpuScore++;
-    pushMeter(-2.5); // CPUが1打鍵押すごとにゲージを2.5%押し戻す
-  }, intervalMs);
+    // 経過秒数を計算
+    const elapsedSec = (Date.now() - gameStartTime) / 1000;
+    
+    // 10秒ごとに何段階遅くなったかを計算
+    const decaySteps = Math.floor(elapsedSec / 10);
+    
+    // 10%ずつ遅くする（0.9 の decaySteps 乗）
+    const currentKpm = baseKpm * Math.pow(0.9, decaySteps);
+
+    // 現在のKPMから1秒あたりの押下数を算出
+    const hitsPerSec = currentKpm / 60;
+    
+    // 0.1秒間にCPUが進むゲージ量（1打鍵 = 2.5%）
+    const meterChangePerTick = hitsPerSec * 2.5 * (tickIntervalMs / 1000);
+
+    // CPUの打鍵数カウント更新
+    cpuScore += hitsPerSec * (tickIntervalMs / 1000);
+
+    // ゲージを押し戻す
+    pushMeter(-meterChangePerTick);
+  }, tickIntervalMs);
 }
 
 function showResults() {
@@ -536,38 +587,23 @@ function showResults() {
 
   document.getElementById('res-player-name').textContent = name;
 
-  let elapsedMinutes = 0.5; // 30秒
-  if (gameMode === 'cpu') {
-    const elapsedSeconds = Math.max(1, (Date.now() - gameStartTime) / 1000);
-    elapsedMinutes = elapsedSeconds / 60;
-  }
-
-  const kpm = Math.round(totalTypedCount / elapsedMinutes);
-  const totalInputs = totalTypedCount + missCount;
-  const accuracy = totalInputs > 0 ? ((totalTypedCount / totalInputs) * 100).toFixed(1) : 0;
-
-  document.getElementById('res-typed').textContent = `${totalTypedCount} 打`;
-  document.getElementById('res-wpm').textContent = kpm;
-  document.getElementById('res-accuracy').textContent = `${accuracy}%`;
-  document.getElementById('res-miss').textContent = `${missCount} 回`;
-
-  const targetCountEl = document.getElementById('res-target-count');
-  if (targetCountEl) {
-    targetCountEl.textContent = gameMode === 'cpu' ? `${targetValue} KPM` : `${targetValue} 打`;
-  }
-
   const vsBox = document.getElementById('vs-result-box');
   const cpuStatBox = document.getElementById('res-cpu-stat-box');
   const targetStatBox = document.getElementById('res-target-count') ? document.getElementById('res-target-count').parentElement : null;
   const resTitleText = document.getElementById('result-title-text');
 
+  // 実経過秒数から経過分数（elapsedMinutes）を正確に計算
+  const elapsedSeconds = Math.max((Date.now() - gameStartTime) / 1000, 0.1);
+  const elapsedMinutes = elapsedSeconds / 60;
+
   if (gameMode === 'cpu') {
-    resTitleText.textContent = "タイピング対戦 結果証明書";
+    if (resTitleText) resTitleText.textContent = "タイピング対戦 結果証明書";
     if (vsBox) vsBox.style.display = "block";
     if (cpuStatBox) cpuStatBox.style.display = "flex";
     if (targetStatBox) targetStatBox.style.display = "none";
     
-    document.getElementById('res-cpu-typed').textContent = `${cpuScore} 打`;
+    // CPU打鍵数を小数点以下切り捨てにして表示
+    document.getElementById('res-cpu-typed').textContent = `${Math.floor(cpuScore)} 打`;
 
     const vsStatusEl = document.getElementById('res-vs-status');
     const targetMsgEl = document.getElementById('res-target-msg');
@@ -584,10 +620,25 @@ function showResults() {
     }
   } else {
     // タイムアタックモード
-    resTitleText.textContent = "タイムアタック 結果証明書";
+    if (resTitleText) resTitleText.textContent = "タイムアタック 結果証明書";
     if (vsBox) vsBox.style.display = "none";
     if (cpuStatBox) cpuStatBox.style.display = "none";
     if (targetStatBox) targetStatBox.style.display = "flex";
+  }
+
+  // 1分換算 (KPM) の正確な計算
+  const kpm = Math.round(totalTypedCount / elapsedMinutes);
+  const totalInputs = totalTypedCount + missCount;
+  const accuracy = totalInputs > 0 ? ((totalTypedCount / totalInputs) * 100).toFixed(1) : 0;
+
+  document.getElementById('res-typed').textContent = `${totalTypedCount} 打`;
+  document.getElementById('res-wpm').textContent = kpm;
+  document.getElementById('res-accuracy').textContent = `${accuracy}%`;
+  document.getElementById('res-miss').textContent = `${missCount} 回`;
+
+  const targetCountEl = document.getElementById('res-target-count');
+  if (targetCountEl) {
+    targetCountEl.textContent = gameMode === 'cpu' ? `${targetValue} KPM` : `${targetValue} 打`;
   }
 
   saveScore(level, name, kpm);
@@ -764,6 +815,7 @@ function updateLevelOptions() {
       optionsHtml += `<option value="${i}" ${disabledAttr}>${labelName}（目標 ${targetKpm}KPM）${lockIcon}</option>`;
     }
   }
+
 
   levelSelect.innerHTML = optionsHtml;
   
