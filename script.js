@@ -208,10 +208,10 @@ const WORD_LIST = {
     { kanji: "料理教室", kana: "りょうりきょうしつ" },
     { kanji: "体調不良", kana: "たいちょうふりょう" },
     { kanji: "町内会会長", kana: "ちょうないかいかいちょう" },
-    { kanji: "運動場", kana: "うんどうかい" },
+    { kanji: "運動場", kana: "うんどうじょう" },
     { kanji: "招待状", kana: "しょうたいじょう" },
     { kanji: "招待券", kana: "しょうたいけん" },
-	{ kanji: "フレミングの法則", kana: "ふれみんぐのほうそく" },
+	  { kanji: "フレミングの法則", kana: "ふれみんぐのほうそく" },
     { kanji: "創造力", kana: "そうぞうりょく" }
   ]
 };
@@ -281,20 +281,20 @@ let currentMatchedInput = "";
 function getTargetCount(level, mode = gameMode) {
   const lvl = Number(level);
   if (mode === 'ta') {
-    return lvl === 4 ? 200 : lvl * 50; // タイムアタック: レベル1:50打, レベル2:100打, レベル3:150打, 大会:200打
+    return lvl === 4 ? 200 : lvl * 50;
   } else {
-    return lvl === 21 ? 1100 : lvl * 50; // CPU対戦: レベル1: 50KPM ... レベル21: 1100KPM
+    return lvl === 21 ? 1100 : lvl * 50;
   }
 }
 
 // 解放された最高レベルを取得・保存する処理（CPU対戦用）
 function getUnlockedLevel(mode) {
   const saved = localStorage.getItem(`kotou_unlocked_lvl_${mode}`);
-  return saved ? Number(saved) : 1; // 初期値はレベル1
+  return saved ? Number(saved) : 1;
 }
 
 function unlockNextLevel(mode, clearedLevel) {
-  if (mode === 'ta') return; // タイムアタックは解放処理を行わない
+  if (mode === 'ta') return;
   const currentUnlocked = getUnlockedLevel(mode);
   const nextLvl = Number(clearedLevel) + 1;
   if (nextLvl > currentUnlocked && nextLvl <= 21) {
@@ -435,7 +435,6 @@ function nextWord() {
   const rubyKana = document.getElementById('ruby-kana');
   const typedTextDisplay = document.getElementById('typed-text');
   
-  // CPU対戦の場合はすべて「4（大会）」の文章を使用。タイムアタックは選択したレベル
   let levelKey = levelSelect ? levelSelect.value : "1";
   if (gameMode === 'cpu') {
     levelKey = "4"; 
@@ -449,7 +448,6 @@ function nextWord() {
   const randomIndex = Math.floor(Math.random() * remainingWords.length);
   nextItem = remainingWords.splice(randomIndex, 1)[0];
 
-  // 漢字とふりがなをセット
   if (currentItem) {
     if (rubyKanji && rubyKana) {
       rubyKanji.childNodes[0].nodeValue = currentItem.kanji;
@@ -546,34 +544,21 @@ function startCpu() {
   const levelSelect = document.getElementById('level-select');
   const level = levelSelect ? levelSelect.value : "1";
   
-  // 基本となる目標KPM（ベース速度）
   const baseKpm = getTargetCount(level, 'cpu');
 
   if (cpuInterval) clearInterval(cpuInterval);
 
-  // 0.1秒（100ms）ごとにCPUの挙動を更新・チェック
   const tickIntervalMs = 100;
   
   cpuInterval = setInterval(() => {
-    // 経過秒数を計算
     const elapsedSec = (Date.now() - gameStartTime) / 1000;
-    
-    // 10秒ごとに何段階遅くなったかを計算
     const decaySteps = Math.floor(elapsedSec / 10);
-    
-    // 10%ずつ遅くする（0.9 の decaySteps 乗）
     const currentKpm = baseKpm * Math.pow(0.9, decaySteps);
 
-    // 現在のKPMから1秒あたりの押下数を算出
     const hitsPerSec = currentKpm / 60;
-    
-    // 0.1秒間にCPUが進むゲージ量（1打鍵 = 2.5%）
     const meterChangePerTick = hitsPerSec * 2.5 * (tickIntervalMs / 1000);
 
-    // CPUの打鍵数カウント更新
     cpuScore += hitsPerSec * (tickIntervalMs / 1000);
-
-    // ゲージを押し戻す
     pushMeter(-meterChangePerTick);
   }, tickIntervalMs);
 }
@@ -592,7 +577,6 @@ function showResults() {
   const targetStatBox = document.getElementById('res-target-count') ? document.getElementById('res-target-count').parentElement : null;
   const resTitleText = document.getElementById('result-title-text');
 
-  // 実経過秒数から経過分数（elapsedMinutes）を正確に計算
   const elapsedSeconds = Math.max((Date.now() - gameStartTime) / 1000, 0.1);
   const elapsedMinutes = elapsedSeconds / 60;
 
@@ -602,7 +586,6 @@ function showResults() {
     if (cpuStatBox) cpuStatBox.style.display = "flex";
     if (targetStatBox) targetStatBox.style.display = "none";
     
-    // CPU打鍵数を小数点以下切り捨てにして表示
     document.getElementById('res-cpu-typed').textContent = `${Math.floor(cpuScore)} 打`;
 
     const vsStatusEl = document.getElementById('res-vs-status');
@@ -612,21 +595,19 @@ function showResults() {
 
     if (isWin) {
       if (vsStatusEl) { vsStatusEl.textContent = "WIN!"; vsStatusEl.className = "vs-status win"; }
-      if (targetMsgEl) { targetMsgEl.textContent = "🎉 CPU撃破！ 次のレベル解放！"; targetMsgEl.style.color = "#2b6cb0"; }
+      if (targetMsgEl) { targetMsgEl.textContent = "🎉 CPU撃破！ 次のレベル解放！"; targetMsgEl.style.color = "#00FFCC"; }
       unlockNextLevel('cpu', level);
     } else {
       if (vsStatusEl) { vsStatusEl.textContent = "LOSE..."; vsStatusEl.className = "vs-status lose"; }
-      if (targetMsgEl) { targetMsgEl.textContent = "❌ CPUに押し切られました..."; targetMsgEl.style.color = "#e53e3e"; }
+      if (targetMsgEl) { targetMsgEl.textContent = "❌ CPUに押し切られました..."; targetMsgEl.style.color = "#FF3366"; }
     }
   } else {
-    // タイムアタックモード
     if (resTitleText) resTitleText.textContent = "タイムアタック 結果証明書";
     if (vsBox) vsBox.style.display = "none";
     if (cpuStatBox) cpuStatBox.style.display = "none";
     if (targetStatBox) targetStatBox.style.display = "flex";
   }
 
-  // 1分換算 (KPM) の正確な計算
   const kpm = Math.round(totalTypedCount / elapsedMinutes);
   const totalInputs = totalTypedCount + missCount;
   const accuracy = totalInputs > 0 ? ((totalTypedCount / totalInputs) * 100).toFixed(1) : 0;
@@ -680,13 +661,14 @@ function startCountdown(callback) {
       left: '0',
       width: '100%',
       height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      backgroundColor: 'rgba(5, 5, 12, 0.9)',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       fontSize: '80px',
       fontWeight: 'bold',
-      color: '#ffffff',
+      color: '#00FFCC',
+      textShadow: '0 0 20px rgba(0, 255, 204, 0.6)',
       zIndex: '9999'
     });
     document.body.appendChild(countOverlay);
@@ -740,7 +722,7 @@ function startGame() {
 
   let levelKey = levelSelect ? levelSelect.value : "1";
   if (gameMode === 'cpu') {
-    levelKey = "4"; // CPU対戦は常に大会用の文章を使用
+    levelKey = "4"; 
   }
   remainingWords = [...(WORD_LIST[levelKey] || WORD_LIST[4])];
 
@@ -773,7 +755,6 @@ function startGame() {
   });
 }
 
-// モードに応じて難易度の表示名、選択不可（鍵ロック）を切り替える関数
 function updateLevelOptions() {
   const levelSelect = document.getElementById('level-select');
   
@@ -791,7 +772,6 @@ function updateLevelOptions() {
   let optionsHtml = "";
 
   if (gameMode === 'ta') {
-    // タイムアタックは全レベル最初から選択可能（目標打鍵数表示）
     const taLevels = [
       { id: 1, name: "レベル1", target: 50 },
       { id: 2, name: "レベル2", target: 100 },
@@ -803,7 +783,6 @@ function updateLevelOptions() {
       optionsHtml += `<option value="${lvl.id}">${lvl.name}（目標 ${lvl.target}打）</option>`;
     });
   } else {
-    // CPU対戦は順番に解放（目標 KPM 表示）
     const unlockedLvl = getUnlockedLevel('cpu');
     for (let i = 1; i <= 21; i++) {
       let targetKpm = getTargetCount(i, 'cpu');
@@ -815,7 +794,6 @@ function updateLevelOptions() {
       optionsHtml += `<option value="${i}" ${disabledAttr}>${labelName}（目標 ${targetKpm}KPM）${lockIcon}</option>`;
     }
   }
-
 
   levelSelect.innerHTML = optionsHtml;
   
@@ -832,9 +810,49 @@ function updateLevelOptions() {
 }
 
 // ==========================================
-// 6. 画面ロード完了時のイベント設定
+// 6. パスワード認証 & ロード時初期化
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+  const passwordModal = document.getElementById('password-modal');
+  const passwordForm = document.getElementById('password-form');
+  const passwordInput = document.getElementById('password-input');
+  const passwordError = document.getElementById('password-error');
+  const modalContent = document.querySelector('.modal-content');
+
+  // パスワード認証ロジック
+  const CORRECT_PASSWORD = "kotou.class8";
+
+  function checkPassword() {
+    const entered = passwordInput.value;
+    if (entered === CORRECT_PASSWORD) {
+      passwordModal.classList.add('hidden');
+      setTimeout(() => {
+        passwordModal.style.display = 'none';
+      }, 300);
+    } else {
+      passwordError.textContent = "パスワードが間違っています！";
+      modalContent.classList.add('shake');
+      passwordInput.value = "";
+      passwordInput.focus();
+      setTimeout(() => {
+        modalContent.classList.remove('shake');
+      }, 400);
+    }
+  }
+
+  if (passwordForm) {
+    passwordForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      checkPassword();
+    });
+  }
+
+  // 初期フォーカス設定
+  if (passwordInput) {
+    passwordInput.focus();
+  }
+
+  // ゲームUI用イベント
   const startBtn = document.getElementById('start-btn');
   const retryBtn = document.getElementById('retry-btn');
   const levelSelect = document.getElementById('level-select');

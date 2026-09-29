@@ -5,8 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>湖東タイピング</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+
+  <!-- パスワード認証モーダル -->
+  <div id="password-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-icon">🔐</span>
+        <h2>SYSTEM LOCK</h2>
+      </div>
+      <p class="modal-description">アクセスするにはパスワードを入力してください</p>
+      
+      <form id="password-form" onsubmit="return false;">
+        <div class="password-input-wrapper">
+          <input type="text" id="password-input" placeholder="PASSWORD..." maxlength="20" autocomplete="off">
+        </div>
+        <div id="password-error" class="error-message"></div>
+        <button type="submit" id="password-submit-btn" class="game-btn auth-btn">UNLOCK GAME</button>
+      </form>
+    </div>
+  </div>
+
   <div class="game-container">
     <h1>湖東タイピング</h1>
 
@@ -51,7 +73,7 @@
           <option value="21">レベル21（1100打）</option>
         </select>
       </div>
-		
+
       <button id="start-btn" class="main-btn">ゲームスタート！</button>
 
       <!-- ランキング表示エリア -->
