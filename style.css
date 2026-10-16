@@ -392,18 +392,27 @@ input[type="text"]:focus, select:focus {
   margin-bottom: 2px;
 }
 
+/* お題の漢字テキスト */
 .kanji-text {
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 10px;
   color: #FFFFFF;
+  /* 修正: 単語の途中でも必ず折り返し、はみ出しを防ぐ */
   word-break: break-all;
+  overflow-wrap: break-word;
+  /* 長い文章の場合に少し文字サイズを自動で小さくしたい時のため */
+  max-height: 4.4rem; /* 2行分程度を目安にする場合 */
+  overflow: hidden;
 }
 
+/* ローマ字テキスト */
 .roma-text {
   font-size: 1.4rem;
   letter-spacing: 1px;
+  /* 修正: はみ出し防止の折り返し設定 */
   word-break: break-all;
+  overflow-wrap: break-word;
   line-height: 1.4;
   font-weight: bold;
 }
