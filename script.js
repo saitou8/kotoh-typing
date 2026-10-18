@@ -124,7 +124,6 @@ const WORD_LIST = {
     { kanji: "ばかめ、そっちは本体だ", kana: "ばかめ、そっちはほんたいだ" },
     { kanji: "哨戒班", kana: "しょうかいはん" },
     { kanji: "塩を少々", kana: "しおをしょうしょう" },
-    { kanji: "良薬口に苦し", kana: "りょうやくくちににがし" },
     { kanji: "境界線", kana: "きょうかいせん" },
     { kanji: "超常現象", kana: "ちょうじょうげんしょう" },
     { kanji: "敗者復活戦", kana: "はいしゃふっかつせん" },
@@ -179,7 +178,6 @@ const WORD_LIST = {
     { kanji: "答案用紙", kana: "とうあんようし" },
     { kanji: "低年齢化", kana: "ていねんれいか" },
     { kanji: "学生証", kana: "がくせいしょう" },
-    { kanji: "来週宇宙に旅行にって来るわ", kana: "らいしゅううちゅうにりょこうにいってくるわ" },
     { kanji: "才能は努力で買うもの", kana: "さいのうはどりょくでかうもの" },
     { kanji: "スピード違反", kana: "すぴーどいはん" },
     { kanji: "健康診断証明書", kana: "けんこうしんだんしょうめいしょ" },
@@ -223,14 +221,13 @@ const WORD_LIST = {
 	{ kanji: "駐車場", kana: "ちゅうしゃじょう" },
 	{ kanji: "表彰状", kana: "ひょうしょうじょう" },
 	{ kanji: "表彰台", kana: "ひょうしょうだい" },
-	{ kanji: "結婚は選択肢の一つでしかない", kana: "けっこんはせんたくしのひとつでしかない" },
+	{ kanji: "結婚は選択肢の一つ", kana: "けっこんはせんたくしのひとつ" },
 	{ kanji: "羽がなくてもはばたけ", kana: "はねがなくてもはばたけ" },
 	{ kanji: "少林寺拳法", kana: "しょうりんじけんぽう" },
 	{ kanji: "長文の文章募集中です", kana: "ちょうぶんのぶんしょうぼしゅうちゅうです" },
 	{ kanji: "延長線上", kana: "えんちょうせんじょう" },
 	{ kanji: "気が進まない", kana: "きがすすまない" },
 	{ kanji: "起承転結", kana: "きしょうてんけつ" },
-	{ kanji: "脊髄反射", kana: "せきずいはんしゃ" },
 	{ kanji: "自称金欠には気を付けて", kana: "じしょうきんけつにはきをつけて" },
 	{ kanji: "あこがれの異世界転生", kana: "あこがれのいせかいてんせい" },
 	{ kanji: "創造は経験から生まれる", kana: "そうぞうはけいけんからうまれる" },
@@ -243,75 +240,32 @@ const WORD_LIST = {
 	{ kanji: "超能力を少々使用できる", kana: "ちょうのうりょくをしょうしょうしようできる" },
 	{ kanji: "遠足を雨天決行", kana: "えんそくをうてんけっこう" },
 	{ kanji: "恋愛感情は文章で扱えない", kana: "れんあいかんじょうはぶんしょうであつかえない" },
-	{ kanji: "恋愛感情を使用した文章募集中", kana: "れんあいかんじょうをしようしたぶんしょうぼしゅうちゅう" },
 	{ kanji: "長距離のラリアット", kana: "ちょうきょりのらりあっと" },
 	{ kanji: "文章がネタ切れです", kana: "ぶんしょうがねたぎれです" },
-	{ kanji: "タイピンガーｚの文章をパクります", kana: "たいぴんがーｚのぶんしょうをぱくります" },
-	{ kanji: "錠剤を使用する際の注意書き", kana: "じょうざいをしようするさいのちゅういがき" },
 	{ kanji: "日本の選手ファイト", kana: "にほんのせんしゅふぁいと" },
-	{ kanji: "円周率は中学校ではπです", kana: "えんしゅうりつはちゅうがっこうではぱいです" },
 	{ kanji: "曲の歌詞を文章にします", kana: "きょくのかしをぶんしょうにします" },
 	{ kanji: "明け方の夢", kana: "あけがたのゆめ" },
 	{ kanji: "夏が来ないままの街を今", kana: "なつがこないままのまちをいま" },
 	{ kanji: "アスノヨゾラ哨戒班", kana: "あすのよぞらしょうかいはん" },
-	{ kanji: "バケモノの長さの文章", kana: "ばけもののながさのぶんしょう" },
-	{ kanji: "超長文の文章正確に打ち切ります", kana: "ちょうちょうぶんのぶんしょうをせいかくにうちきります" },
+	{ kanji: "長文の文章を早く打つ", kana: "ちょうぶんのぶんしょうをはやくうつ" },
 	{ kanji: "木星は地球の救世主", kana: "もくせいはちきゅうのきゅうせいしゅ" },
 	{ kanji: "思想強めな宗教勧誘", kana: "しそうつよめなしゅうきょうかんゆう" },
-	{ kanji: "一球入魂野球部", kana: "いっきゅうにゅうこんやきゅうぶ" },
-	{ kanji: "東京海峡許可局局長", kana: "とうきょうかいきょうきょかきょくきょくちょう" },
 	{ kanji: "言い訳していいわけ", kana: "いいわけしていいわけ" },
-	{ kanji: "鍵盤譜面は嫌いです", kana: "けんばんふめんはきらいです" },
 	{ kanji: "グランドピアノは重いです", kana: "ぐらんどぴあのはおもいです" },
 	{ kanji: "吹奏楽部は楽器が重い", kana: "すいそうがくぶはがっきがおもい" },
 	{ kanji: "水泳部は筋トレをします", kana: "すいえいぶはきんとれをします" },
-	{ kanji: "タイピングには腱鞘炎が付き物です", kana: "たいぴんぐにはけんしょうえんがつきものです" },
-	{ kanji: "少年院にはいかないようにします", kana: "しょうねんいんにはいかないようにします" },
+	{ kanji: "タイピングは腱鞘炎の発生源", kana: "たいぴんぐはけんしょうのはっせいげん" },
 	{ kanji: "昨日の筋トレは今日の筋肉痛", kana: "きのうのきんとれはきょうのきんにくつう" },
-	{ kanji: "超新星爆発は熱いです", kana: "ちょうしんせいばくはつはあついです" },
-	{ kanji: "クイヤ、あー害獣ののクイヤか", kana: "くいや、あーがいじゅうのくいやか" },
-	{ kanji: "クジラは哺乳類ですが蝶々は何類ですか", kana: "くじらはほにゅるいですがちょうちょうはなにるいですか" },
-	{ kanji: "ちょっと何言ってるのか分かりません", kana: "ちょっとなにいってるのかわかりません" },
-	{ kanji: "英語を習得するために勉強をしました", kana: "えいごをしゅうとくするためにべんきょうをしました" },
-	{ kanji: "人間三代欲求の一角睡眠欲の亡者", kana: "にんげんさんだいよっきゅうのいっかくすいみんよくのもうじゃ" },
-	{ kanji: "中学生はテストが難しいです", kana: "ちゅうがくせいはてすとがむずかしいです" },
-	{ kanji: "全国共通テスト上位に乗りました", kana: "ぜんこくきょうつうてすとじょういにのりました" },
-	{ kanji: "ヨガ教室に通っています", kana: "よがきょうしつにかよっています" },
-	{ kanji: "わがままはタダです", kana: "わがままはただです" },
-	{ kanji: "今からでも遅くない、タイピングを始めましょう", kana: "いまからでもおそくない、たいぴんぐをはじめましょう" },
-	{ kanji: "タイピングが本当に速い人は文章は関係ありません", kana: "たいぴんぐがほんとうにはやいひとはぶんしょうはかんけいありません" },
-	{ kanji: "あなたは努力の天才です、なので勉強してください", kana: "あなたはどりょくのてんさいです、なのでべんきょうしてください" },
-	{ kanji: "何やってるんですか、勉強してください", kana: "なにやってるんですか、べんきょうしてください" },
-	{ kanji: "邪魔するのが僕の使命です", kana: "じゃまするのがぼくのしめいです" },
-	{ kanji: "てんしかあくまか", kana: "てんしかあくまか" },
+	{ kanji: "人間三代欲求の睡眠の亡者", kana: "にんげんさんだいよっきゅうのすいみんのもうじゃ" },
 	{ kanji: "映画のちいかわは感動できる", kana: "えいがのちいかわはかんどうできる" },
-	{ kanji: "中学生から部活動を始めます", kana: "ちゅうがくせいからぶかつどうをはじめます" },
+	{ kanji: "中学生から部活を始めます", kana: "ちゅうがくせいからぶかつをはじめます" },
 	{ kanji: "中学生", kana: "ちゅうがくせい" },
-	{ kanji: "私立中学の学費は高い", kana: "しりつちゅうがくのがくひはたかい" },
-	{ kanji: "地雷原で立ち止まる", kana: "じらいげんでたちどまる" },
-	{ kanji: "裁判では感情論に任せてはいけません", kana: "さいばんではかんじょうろんにまかせてはいけません" },
-	{ kanji: "君と防空壕で呼吸する", kana: "きみとぼうくうごうでこきゅうする" },
 	{ kanji: "上腕二頭筋を鍛えたいです", kana: "じょうわんにとうきんをきたえたいです" },
 	{ kanji: "海外のフィジギフはすごい", kana: "かいがいのふぃじぎふはすごい" },
-	{ kanji: "携帯電話はドパガキ量産機以外の他でもない", kana: "けいたいでんわはどぱがきりょうさんきいがいのほかでもない" },
-	{ kanji: "サイダーを飲んで顔が歪む", kana: "さいだーをのんでかおがゆがむ" },
-	{ kanji: "炭酸飲料は苦手です", kana: "たんさんいんりょうはにがてです" },
-	{ kanji: "この文章の半分以上が徹夜の際に作っています", kana: "このぶんしょうのはんぶんいじょうがてつやのさいにつくっています" },
-	{ kanji: "めちゃくちゃ長い文章のアイデアをだしてくれたっていい", kana: "めちゃくちゃながいぶんしょうのあいであをだしてくれたっていい" },
-	{ kanji: "リンスとコンディショナーの違いが分からない", kana: "りんすとこんでぃしょなーのちがいがわからない" },
-	{ kanji: "高級レストランに行く", kana: "こうきゅうれすとらんにいく" },
-	{ kanji: "この文章の半分が本当で半分が噓です", kana: "このぶんしょうのはんぶんがほんとうではんぶんがうそです" },
-	{ kanji: "港区女子の模範解答", kana: "みなとくじょしのもはんかいとう" },
 	{ kanji: "夜明けと蛍", kana: "よあけとほたる" },
-	{ kanji: "染料を使って絵を描きます", kana: "せんりょうをつかってえをかきます" },
 	{ kanji: "コンビニエンスストア", kana: "こんびにえんすすとあ" },
-	{ kanji: "エバーレディーシャープペンシル", kana: "えばーれでぃーしゃーぷぺんしる" },
-	{ kanji: "勉強をすると将来が安泰です", kana: "べんきょうをするとしょうらいがあんたいです" },
 	{ kanji: "自称なら何とでも言える", kana: "じしょうならなんとでもいえる" },
 	{ kanji: "握力計を壊してしまいました", kana: "あくりょくけいをこわしてしまいました" },
-	{ kanji: "懸垂をたくさんやっています", kana: "けんすいをたくさんやっています" },
-	{ kanji: "ピアノにハマっています", kana: "ぴあのにはまっています" },
-	{ kanji: "ピアノが弾けるようになりました", kana: "ぴあのがひけるようになりました" },
 	{ kanji: "団子より花", kana: "だんごよりはな" },
 	{ kanji: "自称段ボール", kana: "じしょうだんぼーる" },
 	{ kanji: "発想力を高める", kana: "はっそうりょくをたかめる" },
@@ -921,16 +875,25 @@ function updateLevelOptions() {
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   const passwordModal = document.getElementById('password-modal');
-  const passwordForm = document.getElementById('password-form');
   const passwordInput = document.getElementById('password-input');
   const passwordError = document.getElementById('password-error');
+  const submitBtn = document.getElementById('password-submit-btn');
   const modalContent = document.querySelector('.modal-content');
 
-  // パスワード認証ロジック
+  // 正しいパスワード
   const CORRECT_PASSWORD = "kotou.class8";
 
+  function toHalfWidth(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９．]/g, function(s) {
+      return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+  }
+
   function checkPassword() {
-    const entered = passwordInput.value;
+    if (!passwordInput) return;
+    
+    const entered = toHalfWidth(passwordInput.value.trim());
+
     if (entered === CORRECT_PASSWORD) {
       passwordModal.classList.add('hidden');
       setTimeout(() => {
@@ -947,15 +910,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (passwordForm) {
-    passwordForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+  // ボタンクリックで判定
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
       checkPassword();
     });
   }
 
-  // 初期フォーカス設定
+  // Enterキーを押したときでも判定できるようにする
   if (passwordInput) {
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        checkPassword();
+      }
+    });
     passwordInput.focus();
   }
 
