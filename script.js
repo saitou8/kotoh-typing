@@ -307,7 +307,7 @@ const ROMA_MAP = {
 // ==========================================
 // 2. 変数管理
 // ==========================================
-let gameMode = 'ta'; // 'ta': タイムアタック, 'cpu': CPU対戦
+let gameMode = 'ta'; // 'ta': 打鍵計測, 'cpu': CPU対戦
 let gameTime = 30;
 let timerInterval = null;
 let gameStartTime = 0; 
@@ -654,7 +654,7 @@ function showResults() {
       if (targetMsgEl) { targetMsgEl.textContent = "❌ CPUに押し切られました..."; targetMsgEl.style.color = "#FF3366"; }
     }
   } else {
-    if (resTitleText) resTitleText.textContent = "タイムアタック 結果証明書";
+    if (resTitleText) resTitleText.textContent = "打鍵計測 結果証明書";
     if (vsBox) vsBox.style.display = "none";
     if (cpuStatBox) cpuStatBox.style.display = "none";
     if (targetStatBox) targetStatBox.style.display = "flex";
@@ -676,15 +676,31 @@ function showResults() {
 
   saveScore(level, name, kpm);
 
-  let title = "がんばろう！";
-  if (kpm >= 1000) title = "神の領域";
-  else if (kpm >= 800) title = "プロタイパー";
-  else if (kpm >= 600) title = "超上級者";
-  else if (kpm >= 400) title = "上級者";
-  else if (kpm >= 300) title = "中級者";
-  else if (kpm >= 200) title = "初級者";
-  else if (kpm >= 100) title = "見習い";
-  else title = "駆け出し";
+  // 称号判定（50刻み、1150〜最高峰）
+  let title = "かけだし";
+  if (kpm >= 1150) title = "タイピング界の偉人";
+  else if (kpm >= 1100) title = "神を卒業";
+  else if (kpm >= 1050) title = "神の限界";
+  else if (kpm >= 1000) title = "神の本気";
+  else if (kpm >= 950) title = "神の入り口";
+  else if (kpm >= 900) title = "日本大会を視野に";
+  else if (kpm >= 850) title = "日本トップランカー";
+  else if (kpm >= 800) title = "全国中学生の部優勝";
+  else if (kpm >= 750) title = "地区大会優勝";
+  else if (kpm >= 700) title = "日本のトップ集団";
+  else if (kpm >= 650) title = "日本ランカー";
+  else if (kpm >= 600) title = "プロを卒業";
+  else if (kpm >= 550) title = "プロの限界";
+  else if (kpm >= 500) title = "上位勢のプロ";
+  else if (kpm >= 450) title = "プロの中くらい";
+  else if (kpm >= 400) title = "プロの入り口";
+  else if (kpm >= 350) title = "一般人を卒業";
+  else if (kpm >= 300) title = "一般人の限界";
+  else if (kpm >= 250) title = "社会人の本気";
+  else if (kpm >= 200) title = "めっちゃはやい";
+  else if (kpm >= 150) title = "速い";
+  else if (kpm >= 100) title = "平均";
+  else title = "かけだし";
 
   document.getElementById('res-title').textContent = title;
 }
@@ -761,6 +777,7 @@ function startGame() {
   meterValue = 50;
 
   if (scoreDisplay) scoreDisplay.textContent = score;
+
   if (timerDisplay) timerDisplay.textContent = gameTime;
 
   if (gameMode === 'cpu') {
