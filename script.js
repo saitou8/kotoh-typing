@@ -319,6 +319,7 @@ let missCount = 0;
 let cpuScore = 0;
 let cpuInterval = null;
 let meterValue = 50; 
+let winStreak = Number(localStorage.getItem('kotou_cpu_win_streak') || 0);
 
 let remainingWords = []; 
 let nextItem = null;
@@ -328,6 +329,7 @@ let currentKanaStr = "";
 let romaPatterns = [];         
 let currentPatternIndex = 0;   
 let currentMatchedInput = "";  
+let isLevel21Game = false;     
 
 // レベルに応じた目標値（KPMまたは打鍵数）を取得
 function getTargetCount(level, mode = gameMode) {
@@ -488,7 +490,7 @@ function nextWord() {
   const typedTextDisplay = document.getElementById('typed-text');
   
   let levelKey = levelSelect ? levelSelect.value : "1";
-  if (gameMode === 'cpu') {
+  if (gameMode === 'cpu' && !isLevel21Game) {
     levelKey = "4"; 
   }
 
@@ -594,7 +596,7 @@ function handleKeyPress(e) {
 function startCpu() {
   cpuScore = 0;
   const levelSelect = document.getElementById('level-select');
-  const level = levelSelect ? levelSelect.value : "1";
+  const level = isLevel21Game ? "21" : (levelSelect ? levelSelect.value : "1");
   
   const baseKpm = getTargetCount(level, 'cpu');
 
@@ -615,7 +617,172 @@ function startCpu() {
   }, tickIntervalMs);
 }
 
+// レベル21解放の特殊演出を表示する関数
+function checkAndShowLevel21Effect(clearedLevel) {
+  const lvl = Number(clearedLevel);
+  let triggerChance = 0;
+
+  if (lvl >= 10 && lvl <= 20) {
+    triggerChance = 0.50; 
+  } else if (totalTypedCount >= 1000) {
+    triggerChance = 0.50; 
+  }
+
+  if (triggerChance > 0 && Math.random() < triggerChance) {
+    showSmokeLevel21Effect();
+    return true;
+  }
+  return false;
+}
+
+let level21TimerInterval = null;
+let level21KeyHandler = null;
+
+function showSmokeLevel21Effect() {
+  let overlay = document.getElementById('smoke-effect-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'smoke-effect-overlay';
+    Object.assign(overlay.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#1E222D',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: '10005',
+      opacity: '0',
+      transition: 'opacity 1.5s ease'
+    });
+
+    const redTimer = document.createElement('div');
+    redTimer.id = 'wait-red-timer';
+    redTimer.textContent = '20';
+    Object.assign(redTimer.style, {
+      color: '#FF3366',
+      fontSize: '4rem',
+      fontWeight: 'bold',
+      marginBottom: '15px',
+      textShadow: '0 0 15px rgba(255, 51, 102, 0.6)'
+    });
+    overlay.appendChild(redTimer);
+
+    const msg = document.createElement('div');
+    msg.id = 'wait-msg';
+    msg.innerHTML = '<h2>レベル21解放！</h2><p style="margin-top:15px; font-size:1.2rem; color:#00FFCC;">スペースキー または エンターキー を押して開始</p>';
+    overlay.appendChild(msg);
+
+    document.body.appendChild(overlay);
+  }
+
+  overlay.style.display = 'flex';
+  setTimeout(() => {
+    overlay.style.opacity = '1';
+  }, 50);
+
+  startLevel21WaitingScreen();
+}
+
+function cleanupSmokeEffect() {
+  const overlay = document.getElementById('smoke-effect-overlay');
+  if (overlay) {
+    overlay.remove();
+  }
+  if (level21TimerInterval) {
+    clearInterval(level21TimerInterval);
+    level21TimerInterval = null;
+  }
+  if (level21KeyHandler) {
+    window.removeEventListener('keydown', level21KeyHandler);
+    level21KeyHandler = null;
+  }
+}
+
+// 21れべ待機画面（20秒タイマー＆スペース・エンター対応）
+function startLevel21WaitingScreen() {
+  if (level21TimerInterval) clearInterval(level21TimerInterval);
+  if (level21KeyHandler) window.removeEventListener('keydown', level21KeyHandler);
+
+  let timeLeft = 20;
+  const redTimerEl = document.getElementById('wait-red-timer');
+  if (redTimerEl) redTimerEl.textContent = timeLeft;
+
+  level21TimerInterval = setInterval(() => {
+    timeLeft--;
+    if (redTimerEl) redTimerEl.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(level21TimerInterval);
+      cleanupSmokeEffect();
+      document.getElementById('result-screen').classList.remove('active');
+      document.getElementById('start-screen').classList.add('active');
+    }
+  }, 1000);
+
+  level21KeyHandler = (e) => {
+    if (e.code === 'Space' || e.key === 'Enter') {
+      e.preventDefault();
+      clearInterval(level21TimerInterval);
+      window.removeEventListener('keydown', level21KeyHandler);
+      cleanupSmokeEffect();
+      
+      // リザルト画面をしっかり消してゲームスタート画面に切り替える
+      document.getElementById('result-screen').classList.remove('active');
+      startLevel21Game();
+    }
+  };
+  window.addEventListener('keydown', level21KeyHandler);
+}
+
+function startLevel21Game() {
+  isLevel21Game = true;
+  if (timerInterval) clearInterval(timerInterval);
+  if (cpuInterval) clearInterval(cpuInterval);
+
+  const startScreen = document.getElementById('start-screen');
+  const playScreen = document.getElementById('play-screen');
+  const vsMeterContainer = document.getElementById('vs-meter-container');
+  const timerStatusItem = document.getElementById('timer-status-item');
+  const scoreDisplay = document.getElementById('score');
+
+  score = 0;
+  totalTypedCount = 0;
+  missCount = 0;
+  meterValue = 50;
+
+  if (scoreDisplay) scoreDisplay.textContent = score;
+  if (vsMeterContainer) vsMeterContainer.style.display = "block";
+  if (timerStatusItem) timerStatusItem.style.display = "none";
+  updateMeterDisplay();
+
+  remainingWords = [...(WORD_LIST[4] || [])];
+  let randomIndex = Math.floor(Math.random() * remainingWords.length);
+  nextItem = remainingWords.splice(randomIndex, 1)[0];
+
+  if (startScreen) startScreen.classList.remove('active');
+  if (playScreen) playScreen.classList.add('active');
+  document.body.classList.add('in-game');
+
+  nextWord();
+
+  startCountdown(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    gameStartTime = Date.now();
+    startCpu();
+  });
+}
+
 function showResults() {
+  if (isLevel21Game) {
+    isLevel21Game = false;
+    document.getElementById('play-screen').classList.remove('active');
+    document.getElementById('start-screen').classList.add('active');
+    return;
+  }
+
   const playerNameInput = document.getElementById('player-name-input');
   const name = (playerNameInput && playerNameInput.value.trim()) || "ゲスト";
   const levelSelect = document.getElementById('level-select');
@@ -649,15 +816,46 @@ function showResults() {
       if (vsStatusEl) { vsStatusEl.textContent = "WIN!"; vsStatusEl.className = "vs-status win"; }
       if (targetMsgEl) { targetMsgEl.textContent = "🎉 CPU撃破！ 次のレベル解放！"; targetMsgEl.style.color = "#00FFCC"; }
       unlockNextLevel('cpu', level);
+
+      const currentLvlNum = Number(level);
+      if (currentLvlNum >= 10) {
+        winStreak++;
+        localStorage.setItem('kotou_cpu_win_streak', winStreak);
+      } else {
+        winStreak = 0;
+        localStorage.setItem('kotou_cpu_win_streak', winStreak);
+      }
+
+      if (winStreak >= 10) {
+        winStreak = 0;
+        localStorage.setItem('kotou_cpu_win_streak', winStreak);
+        
+        // 10連勝達成！リザルトを出さずにすぐに煙＆待機画面へ突入
+        showSmokeLevel21Effect();
+        return;
+      }
+
+      setTimeout(() => {
+        checkAndShowLevel21Effect(level);
+      }, 500);
     } else {
       if (vsStatusEl) { vsStatusEl.textContent = "LOSE..."; vsStatusEl.className = "vs-status lose"; }
       if (targetMsgEl) { targetMsgEl.textContent = "❌ CPUに押し切られました..."; targetMsgEl.style.color = "#FF3366"; }
+      
+      winStreak = 0;
+      localStorage.setItem('kotou_cpu_win_streak', winStreak);
     }
   } else {
     if (resTitleText) resTitleText.textContent = "打鍵計測 結果証明書";
     if (vsBox) vsBox.style.display = "none";
     if (cpuStatBox) cpuStatBox.style.display = "none";
     if (targetStatBox) targetStatBox.style.display = "flex";
+
+    if (totalTypedCount >= 1000) {
+      setTimeout(() => {
+        checkAndShowLevel21Effect(level);
+      }, 500);
+    }
   }
 
   const kpm = Math.round(totalTypedCount / elapsedMinutes);
@@ -676,7 +874,6 @@ function showResults() {
 
   saveScore(level, name, kpm);
 
-  // 称号判定（50刻み、1150〜最高峰）
   let title = "かけだし";
   if (kpm >= 1150) title = "タイピング界の偉人";
   else if (kpm >= 1100) title = "神を卒業";
@@ -762,6 +959,7 @@ function startCountdown(callback) {
 }
 
 function startGame() {
+  isLevel21Game = false;
   const levelSelect = document.getElementById('level-select');
   const scoreDisplay = document.getElementById('score');
   const timerDisplay = document.getElementById('timer');
@@ -853,7 +1051,7 @@ function updateLevelOptions() {
     });
   } else {
     const unlockedLvl = getUnlockedLevel('cpu');
-    for (let i = 1; i <= 21; i++) {
+    for (let i = 1; i <= 20; i++) {
       let targetKpm = getTargetCount(i, 'cpu');
       let isLocked = i > unlockedLvl;
       let disabledAttr = isLocked ? "disabled" : "";
@@ -942,11 +1140,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const levelSelect = document.getElementById('level-select');
   const modeBtns = document.querySelectorAll('.mode-btn');
 
-  modeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      modeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      gameMode = btn.getAttribute('data-mode');
+  modeBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      modeBtns.forEach(btn => btn.classList.remove('active'));
+      b.classList.add('active');
+      gameMode = b.getAttribute('data-mode');
       
       updateLevelOptions();
       updateRankingDisplay();
